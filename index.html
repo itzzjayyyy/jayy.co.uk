@@ -73,7 +73,6 @@
     backdrop-filter: blur(4px);
   }
   .nav-logo { display: flex; align-items: center; }
-  .nav-logo span { color: var(--accent3); }
   .nav-links { display: flex; gap: 2.5rem; }
   .nav-links a {
     text-decoration: none; color: var(--muted);
@@ -96,19 +95,19 @@
     z-index: 1; overflow: hidden;
   }
 
+  /* Two orbs, reduced opacity */
   .orb {
     position: absolute; border-radius: 50%;
-    filter: blur(80px); opacity: 0.18;
+    filter: blur(100px); opacity: 0.10;
     pointer-events: none;
-    animation: orbFloat 10s ease-in-out infinite;
+    animation: orbFloat 12s ease-in-out infinite;
   }
   .orb1 { width: 500px; height: 500px; background: var(--accent); top: -100px; right: -100px; animation-delay: 0s; }
-  .orb2 { width: 350px; height: 350px; background: var(--accent2); bottom: 100px; left: 10%; animation-delay: -4s; }
-  .orb3 { width: 250px; height: 250px; background: var(--accent3); top: 40%; right: 20%; animation-delay: -7s; }
+  .orb2 { width: 350px; height: 350px; background: var(--accent2); bottom: 80px; left: 5%; animation-delay: -5s; }
 
   @keyframes orbFloat {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
+    50% { transform: translateY(-25px) scale(1.04); }
   }
 
   .hero-label {
@@ -118,8 +117,7 @@
     opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
   }
   .hero-label::before {
-    content: ''; display: block;
-    width: 40px; height: 1px; background: var(--accent);
+    content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
   }
 
   h1 {
@@ -151,7 +149,7 @@
     padding: 0.85rem 2rem;
     font-family: 'Syne', sans-serif; font-size: 0.8rem;
     font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-    text-decoration: none; border: none; cursor: none;
+    text-decoration: none; border: none; cursor: pointer;
     transition: all 0.3s;
   }
   .btn-primary {
@@ -160,7 +158,7 @@
   }
   .btn-primary:hover {
     background: #fff;
-    box-shadow: 0 0 40px rgba(0,210,255,0.5);
+    box-shadow: 0 0 40px rgba(0,210,255,0.4);
     transform: translateY(-2px);
   }
   .btn-ghost {
@@ -179,16 +177,11 @@
     display: flex; align-items: center; gap: 1rem;
     font-size: 0.65rem; letter-spacing: 0.3em; color: var(--muted);
     text-transform: uppercase;
-    opacity: 0; animation: fadeUp 0.8s 1.4s forwards;
+    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
   }
   .scroll-line {
-    width: 1px; height: 50px;
+    width: 1px; height: 40px;
     background: linear-gradient(to bottom, var(--accent), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 1; transform: scaleY(1); }
-    50% { opacity: 0.4; transform: scaleY(0.7); }
   }
 
   .stats-bar {
@@ -251,15 +244,11 @@
 
   .skill-icon-wrap {
     width: 36px; height: 36px; margin-bottom: 1.5rem;
-    opacity: 0.45; transition: opacity 0.3s;
+    opacity: 0.35; transition: opacity 0.3s;
     display: flex; align-items: center; justify-content: center;
   }
-  .skill-card:hover .skill-icon-wrap { opacity: 1; }
-  .skill-icon-wrap i {
-    font-size: 32px;
-    color: var(--accent);
-    line-height: 1;
-  }
+  .skill-card:hover .skill-icon-wrap { opacity: 0.8; }
+  .skill-icon-wrap i { font-size: 32px; color: var(--accent); line-height: 1; }
 
   .skill-lang {
     font-family: 'Orbitron', monospace;
@@ -283,7 +272,7 @@
     font-size: 0.7rem; color: var(--muted);
     margin-bottom: 0.4rem; letter-spacing: 0.05em;
   }
-  .skill-bar-bg { height: 3px; background: rgba(255,255,255,0.07); }
+  .skill-bar-bg { height: 2px; background: rgba(255,255,255,0.06); }
   .skill-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -297,7 +286,7 @@
     align-items: center; gap: 3rem;
     padding: 2.5rem 0;
     border-bottom: 1px solid var(--border);
-    cursor: none; transition: padding-left 0.4s;
+    cursor: default; transition: padding-left 0.4s;
     position: relative;
   }
   .project-item::after {
@@ -311,10 +300,7 @@
     font-family: 'Orbitron', monospace;
     font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em;
   }
-  .project-info h3 {
-    font-size: 1.3rem; font-weight: 600; margin-bottom: 0.4rem;
-    transition: color 0.3s;
-  }
+  .project-info h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.4rem; transition: color 0.3s; }
   .project-item:hover .project-info h3 { color: var(--accent); }
   .project-info p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
   .project-tech { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
@@ -330,7 +316,7 @@
     position: relative; overflow: hidden;
     transition: border-color 0.4s, transform 0.4s;
   }
-  .hw-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+  .hw-card:hover { border-color: rgba(123,47,255,0.4); transform: translateY(-3px); }
   .hw-card::before {
     content: attr(data-label);
     position: absolute; top: 1.5rem; right: 1.5rem;
@@ -340,14 +326,10 @@
   .hw-glyph {
     width: 32px; height: 32px; margin-bottom: 1.5rem;
     display: flex; align-items: center; justify-content: center;
-    opacity: 0.5; transition: opacity 0.3s;
+    opacity: 0.35; transition: opacity 0.3s;
   }
-  .hw-card:hover .hw-glyph { opacity: 1; }
-  .hw-glyph i {
-    font-size: 28px;
-    color: var(--accent);
-    line-height: 1;
-  }
+  .hw-card:hover .hw-glyph { opacity: 0.8; }
+  .hw-glyph i { font-size: 28px; color: var(--accent); line-height: 1; }
   .hw-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
   .hw-card p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); }
 
@@ -359,7 +341,15 @@
   #contact .section-tag { justify-content: center; }
   #contact .section-tag::before { display: none; }
   #contact h2 { margin-bottom: 1.5rem; }
-  #contact p { color: var(--muted); max-width: 400px; margin: 0 auto 3rem; line-height: 1.8; font-size: 1rem; }
+  #contact p { color: var(--muted); max-width: 400px; margin: 0 auto 1.5rem; line-height: 1.8; font-size: 1rem; }
+  #contact .contact-email {
+    display: block; margin-bottom: 2rem;
+    font-family: 'Orbitron', monospace; font-size: 0.85rem;
+    color: var(--accent); letter-spacing: 0.15em;
+    text-decoration: none; opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+  #contact .contact-email:hover { opacity: 1; }
 
   footer {
     position: relative; z-index: 1;
@@ -367,10 +357,7 @@
     border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
   }
-  .footer-logo {
-    font-family: 'Orbitron', monospace; font-size: 0.75rem;
-    font-weight: 700; color: var(--muted); letter-spacing: 0.3em;
-  }
+  .footer-logo { display: flex; align-items: center; }
   .footer-copy { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; }
 
   .blink {
@@ -382,33 +369,15 @@
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .scan-line {
-    position: fixed; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0.15; z-index: 200;
-    animation: scanDown 6s linear infinite;
-  }
-  @keyframes scanDown { 0% { top: 0; } 100% { top: 100vh; } }
-
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
-
-  h1:hover em { animation: glitch 0.3s; }
-  @keyframes glitch {
-    0%   { text-shadow: 2px 0 var(--accent3); transform: translateX(0); }
-    20%  { text-shadow: -2px 0 var(--accent2); transform: translateX(-2px); }
-    40%  { text-shadow: 2px 0 var(--accent3); transform: translateX(2px); }
-    60%  { text-shadow: -2px 0 var(--accent2); transform: translateX(0); }
-    80%  { text-shadow: 2px 0 var(--accent3); transform: translateX(1px); }
-    100% { text-shadow: none; transform: translateX(0); }
-  }
 
   .nav-hamburger {
     display: none;
@@ -471,9 +440,7 @@
     .scroll-hint { display: none; }
     .orb1 { width: 260px; height: 260px; }
     .orb2 { width: 180px; height: 180px; }
-    .orb3 { width: 130px; height: 130px; }
     .stats-bar {
-      gap: 0; flex-wrap: nowrap;
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 1px; background: var(--border); padding: 0;
     }
@@ -503,7 +470,6 @@
 </head>
 <body>
 
-<div class="scan-line"></div>
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
@@ -538,7 +504,6 @@
 <section id="hero">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
   <div class="hero-label">Developer &amp; Builder</div>
   <h1>
     BUILDING<br>
@@ -584,18 +549,13 @@
   </p>
 
   <div class="skills-grid">
-
     <div class="skill-card reveal">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-moon" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-moon" aria-hidden="true"></i></div>
       <div class="skill-lang">Lua</div>
       <h3>Game Scripting</h3>
       <p>Most of my Lua work has been in Roblox Studio — writing placement systems, GUI logic, and server-client communication. It made me think seriously about event-driven code and what happens when players try to break things.</p>
       <div class="skill-tags">
-        <span class="tag">Roblox Studio</span>
-        <span class="tag">Events</span>
-        <span class="tag">Security</span>
+        <span class="tag">Roblox Studio</span><span class="tag">Events</span><span class="tag">Security</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>85%</span></div>
@@ -604,16 +564,12 @@
     </div>
 
     <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-brand-html5" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-brand-html5" aria-hidden="true"></i></div>
       <div class="skill-lang">HTML &amp; CSS</div>
       <h3>Web &amp; UI</h3>
       <p>Started with HTML because I wanted to make things visible on a screen. Grew from there into layouts, responsive design, and learning what makes a page actually usable — not just technically correct.</p>
       <div class="skill-tags">
-        <span class="tag">Responsive</span>
-        <span class="tag">Layouts</span>
-        <span class="tag">CSS</span>
+        <span class="tag">Responsive</span><span class="tag">Layouts</span><span class="tag">CSS</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>80%</span></div>
@@ -622,16 +578,12 @@
     </div>
 
     <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-brand-python" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-brand-python" aria-hidden="true"></i></div>
       <div class="skill-lang">Python</div>
       <h3>Scripting &amp; Automation</h3>
       <p>Python is what I reach for when I want to get something done without overthinking it. I've used it for automation, messing with APIs, and prototyping ideas quickly. It reads well and gets out of the way.</p>
       <div class="skill-tags">
-        <span class="tag">Automation</span>
-        <span class="tag">APIs</span>
-        <span class="tag">Scripting</span>
+        <span class="tag">Automation</span><span class="tag">APIs</span><span class="tag">Scripting</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>75%</span></div>
@@ -640,16 +592,12 @@
     </div>
 
     <div class="skill-card reveal reveal-delay-1">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-coffee" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-coffee" aria-hidden="true"></i></div>
       <div class="skill-lang">Java</div>
       <h3>Object-Oriented Programming</h3>
       <p>Java pushed me to think in a more structured way — proper classes, interfaces, and thinking ahead about how pieces fit together. It's verbose but that verbosity forces good habits early on.</p>
       <div class="skill-tags">
-        <span class="tag">OOP</span>
-        <span class="tag">Structure</span>
-        <span class="tag">Logic</span>
+        <span class="tag">OOP</span><span class="tag">Structure</span><span class="tag">Logic</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>65%</span></div>
@@ -658,16 +606,12 @@
     </div>
 
     <div class="skill-card reveal reveal-delay-2">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-brand-nodejs" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-brand-nodejs" aria-hidden="true"></i></div>
       <div class="skill-lang">Node.js</div>
       <h3>Backend &amp; Bots</h3>
       <p>Most of my Node work has been building Discord bots — event handling, persistent storage, modular architecture. Also used Node-Canvas for generating images on the fly. It's where my JavaScript actually does something useful.</p>
       <div class="skill-tags">
-        <span class="tag">Discord.js</span>
-        <span class="tag">Node-Canvas</span>
-        <span class="tag">Events</span>
+        <span class="tag">Discord.js</span><span class="tag">Node-Canvas</span><span class="tag">Events</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>70%</span></div>
@@ -676,23 +620,18 @@
     </div>
 
     <div class="skill-card reveal reveal-delay-3">
-      <div class="skill-icon-wrap">
-        <i class="ti ti-cpu" aria-hidden="true"></i>
-      </div>
+      <div class="skill-icon-wrap"><i class="ti ti-cpu" aria-hidden="true"></i></div>
       <div class="skill-lang">Hardware</div>
       <h3>PC Building &amp; Systems</h3>
       <p>I've built several custom PCs from scratch and run my own servers at home. Understanding what's happening physically — components, thermals, compatibility — changes how you think about the software running on top of it.</p>
       <div class="skill-tags">
-        <span class="tag">Assembly</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Docker</span>
+        <span class="tag">Assembly</span><span class="tag">Linux</span><span class="tag">Docker</span>
       </div>
       <div class="skill-bar-wrap">
         <div class="skill-bar-label"><span>Proficiency</span><span>90%</span></div>
         <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -711,9 +650,7 @@
         <p>Tracks who invited who in a Discord server — including edge cases like deleted or expired links. Keeping accurate counts across a live server is trickier than it sounds. Added a leaderboard, persistent storage, and built it modular so adding features later wasn't painful.</p>
       </div>
       <div class="project-tech">
-        <span>Node.js</span>
-        <span>Discord.js</span>
-        <span>JavaScript</span>
+        <span>Node.js</span><span>Discord.js</span><span>JavaScript</span>
       </div>
     </div>
 
@@ -724,8 +661,7 @@
         <p>Generates a custom image when someone joins a server — avatar, username, server info, all composed at runtime using Node-Canvas. Mostly an excuse to get into image manipulation through code, and it ended up looking pretty good.</p>
       </div>
       <div class="project-tech">
-        <span>Node-Canvas</span>
-        <span>Node.js</span>
+        <span>Node-Canvas</span><span>Node.js</span>
       </div>
     </div>
 
@@ -736,9 +672,7 @@
         <p>Set up a Pi as a proper web server running Nginx and Docker. Containerised a few services, got reverse proxying working, and kept it running reliably on hardware that costs less than a takeaway. Good way to learn what production actually means.</p>
       </div>
       <div class="project-tech">
-        <span>Docker</span>
-        <span>Nginx</span>
-        <span>Linux</span>
+        <span>Docker</span><span>Nginx</span><span>Linux</span>
       </div>
     </div>
 
@@ -749,8 +683,7 @@
         <p>Various systems built in Lua — placement mechanics, interactive GUIs, server-side validation. Working in Roblox means your code runs in front of players who will actively try to exploit it, which forces you to write more defensively than you would otherwise.</p>
       </div>
       <div class="project-tech">
-        <span>Lua</span>
-        <span>Roblox Studio</span>
+        <span>Lua</span><span>Roblox Studio</span>
       </div>
     </div>
   </div>
@@ -765,33 +698,25 @@
 
   <div class="hardware-grid">
     <div class="hw-card reveal" data-label="Builds">
-      <div class="hw-glyph">
-        <i class="ti ti-device-desktop" aria-hidden="true"></i>
-      </div>
+      <div class="hw-glyph"><i class="ti ti-device-desktop" aria-hidden="true"></i></div>
       <h3>Custom PC Building</h3>
       <p>Put together several machines over the years — gaming rigs, a home server, a dev box. Picking parts, doing the build, troubleshooting when something doesn't POST. You get faster at it and you stop being precious about it.</p>
     </div>
 
     <div class="hw-card reveal reveal-delay-1" data-label="OS">
-      <div class="hw-glyph">
-        <i class="ti ti-terminal-2" aria-hidden="true"></i>
-      </div>
+      <div class="hw-glyph"><i class="ti ti-terminal-2" aria-hidden="true"></i></div>
       <h3>Operating Systems</h3>
       <p>Comfortable moving between Windows, Linux, and Raspberry Pi OS. Installed and configured enough systems to know where things go wrong — partitioning, drivers, getting hardware properly recognised. Nothing exotic, just practical familiarity.</p>
     </div>
 
     <div class="hw-card reveal reveal-delay-2" data-label="Project">
-      <div class="hw-glyph">
-        <i class="ti ti-server" aria-hidden="true"></i>
-      </div>
+      <div class="hw-glyph"><i class="ti ti-server" aria-hidden="true"></i></div>
       <h3>Raspberry Pi Projects</h3>
       <p>The home server is the main one — running services in Docker containers behind Nginx, accessible remotely, generally just staying up. Small hardware with real constraints is a good way to learn what actually matters in system design.</p>
     </div>
 
     <div class="hw-card reveal reveal-delay-3" data-label="Approach">
-      <div class="hw-glyph">
-        <i class="ti ti-tool" aria-hidden="true"></i>
-      </div>
+      <div class="hw-glyph"><i class="ti ti-tool" aria-hidden="true"></i></div>
       <h3>How I Approach Problems</h3>
       <p>I don't mind not knowing something when I start. Most of the projects on this page began with figuring out something I hadn't done before. Getting things working, then understanding why they work — that's the habit I've built up.</p>
     </div>
@@ -802,6 +727,7 @@
   <div class="section-tag reveal">Say Hello</div>
   <h2 class="reveal">Get In <span>Touch</span></h2>
   <p class="reveal">Whether you've got a project in mind or just want to talk about something you're building, feel free to reach out.</p>
+  <a href="mailto:jayy@jzrr.uk" class="contact-email reveal">jayy@jzrr.uk</a>
   <div class="reveal">
     <a href="mailto:jayy@jzrr.uk" class="btn btn-primary">Send a Message</a>
   </div>
